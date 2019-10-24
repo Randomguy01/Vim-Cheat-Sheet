@@ -1,0 +1,171 @@
+*********************
+Operators and Motions
+*********************
+*operator [count] motion -CHANGE COMMAND FORMAT
+*WHERE: 
+*Operator -REQUIRED What to do(EX: d to delte)
+*[count] -OPTIONAL  how many times to perform command(EX: 2 for *Wait for it*
+	twice)
+*Motion -REQUIRED moves over the text(EX: w for one word)
+
+Entering and Exiting VIM
+~~~~~~~~~~~~~~~~~~~~~
+vim <<FILENAME>> -OPEN FILE IN VIM
+:w <<FILENAME>> -SAVE FILE WITH NAME <<FILENAME>>
+:wq -SAVE AND QUIT
+:q -QUIT
+  !-discard changes
+:!del <<FILENAME>> -DELTE <<FILENAME>>
+
+Changing Modes
+~~~~~~~~~~~~~~~
+<<ESC>> -ENTER NORMAL MODE
+
+!Note: Following commands will enter mode when being entered in normal mode
+i -INSERT MODE
+I -GO TO START OF LINE AND OPEN INSERT MODE
+a -MOVE ONE CHARACTER FORWARD AND OPEN INSERT MODE
+A -GO TO END OF LINE AND OPEN INSERT MODE
+v -VISUAL MODE
+V -SELECT CURRENT LINE AND OPEN VISUAL MODE
+o -ADD LINE BELOW AND OPEN INSERT MODE
+O -ADD LINE ABOVE AND OPEN INSERT MODE
+
+
+Moving
+~~~~~~~
+h -MOVE CURSOR LEFT
+l -MOVE CURSOR RIGHT
+j -MOVE CURSOR DOWN
+k -MOVE CURSOR UP
+
+CTR+E -SCROLL DOWN
+CTR+Y -SCROLL UP
+
+w -MOVE TO START OF NEXT WORD
+e -MOVE TO END OF NEXT WORD
+
+0 -MOVE TO START OF LINE
+$ -MOVE TO END OF LINE
+
+<<LINE NUMBER>>G -MOVE TO LINE NUMBER
+gg -MOVE TO TOP OF FILE
+G -MOVE TO BOTTOM OF FILE
+
+/<<QUERY>> -SEARCH FOR QUERY
+?<<QUERY>> -SEARCH FOR QUERY(REVERSE ORDER)
+n -NEXT MATCH
+N -PREVIOUS MATCH
+CTR+O -GO BACK
+CTR+I -GO FORWARD
+
+!NOTE: to hide highlighting run the command   noh  . 
+
+
+% -FIND MATCHING BRACE(WORKS FOR (), [], and {})
+
+Editing
+~~~~~~~
+d -DELETE(Also stores deleted character in VIM register;Same motions as change)
+  w -word(excluding first character)
+  e -to end of word(including last character)
+  $ -to end of line(including last character)
+  d -entire line
+  h -character to left of cursor
+  l -character to right of cursor
+  j/k -entire line
+
+y -YANK(COPY; WHILE IN VISUAL MODE; SAME MOTIONS AS CHANGE AND DELTE)
+
+p -INSERT DELETED/YANKED TEXT AFTER CURSOR(PASTE)
+
+u -UNDO
+U -UNDO ALL LINE CHANGES
+CTR+R -REDO
+
+r<<CHARACTER>> -REPLACE CHARACTER UNDER CURSOR
+R<<CHARACTERS>> -REPLACE FOLLOWING CHARACTERS
+
+c -CHANGE(same motions as delete) AND ENTER INSERT MODE
+  w -word(excluding first character)
+  e -to end of word(including last character)
+  $ -to end of line(including last character)
+  d -entire line
+  h -character to left of cursor
+  l -character to right of cursor
+  j/k -entire line   
+
+File Information
+~~~~~~~~~~~~~~~~
+CTR+G -SHOW FILE INFORMATION
+
+*************
+Documentation
+*************
+!NOTE: for more information about a command type :help <<COMMAND>>
+!NOTE: for more information type :help or <F1>
+!NOTE: User manual command :help user-command	
+
+
+Modes
+~~~~~
+  NORMAL: Allows for viewing a file; Pressing : will allow you to run commands
+  INSERT: Allows you to edit text; Places cursor down in current position
+    -APPEND: Using the append command(a) will enter insert mode, however it
+will place the cursor one character to the right
+  VISUAL: Allows for selection of text; Pressing : will allow you to run a
+command on that text selection
+
+
+********
+Commands
+********
+!Note: commands can be run while in NORMAL mode by pressing :
+
+!<<SHELL COMMAND>> -EXECUTE AN EXTERNAL SHELL COMMAND FROM VIM
+
+set number -SHOW LINE NUMBERS
+
+[%][<<START>>,<<STOP>>]s/<<OLD>>/<<NEW>> -REPLACE FIRST OCCURENCE OF <<OLD>> with
+<<NEW>> ON LINE(<<START>>,<<STOP>>:optionally specify range of lines to
+search; %:optionally specify search entire file)
+  /g -every occurence on line
+  /gc -prompt beforing changing each occurance
+    y -yes, change this occurence
+    n -no, do not change this occurence
+    a -replace all further occurences
+    q -quit(abort) command
+    l -change next occurence and stop
+    ^E -(CTR+E) scroll up
+    ^Y -(CTR+Y) scroll down
+  /ic -ignore case for this search
+
+noh -HIDE HIGHLIGHTS
+
+
+r <<FILENAME/!COMMAND>> -INSERT CONTENTS OF FILENAME OR OUTPUt OF SHELL
+COMMAND
+
+***********
+VIM Options
+***********
+!NOTE: TYPE :set FOLLOWED BY OPTION TO TURN ON
+!NOTE: TYPE :set no FOLLOWED BY OPTION TO TURN OFF
+
+hlsearch/hls -SEARCH HIGHLIGHTING
+is/incsearch -SEARCH PARTIAL MATCHES
+ic/ignorecase -SEARCH IGNORE CASE
+
+number -LINE NUMBERS
+
+cp -COMPATABILE MODE
+
+
+
+*******************
+Advance VIM Options
+*******************
+Open vimrc file: :e $VIM/_vimrc
+Example vimrc file :r $VIMRUNTIME/vimrc_example.vim
+!NOTE: for vimrc help type :help vimrc-intro
+!IMPORTANT: MAKE SURE TO SAVE vimrc FILE 
