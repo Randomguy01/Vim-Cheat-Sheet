@@ -1,5 +1,5 @@
-![Vim Logo](https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg)
-#Vim Cheat Sheet
+![Vim Logo](https://cdn.iconscout.com/icon/free/png-256/vim-283379.png)
+# Vim Cheat Sheet
 ### Created by Ian White
 ### Created 10/19/2019
 
