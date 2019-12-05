@@ -163,7 +163,7 @@ cp -COMPATABILE MODE
 
 
 *******************
-Advance VIM Options
+Advanced VIM Options
 *******************
 Open vimrc file: :e $VIM/_vimrc
 Example vimrc file :r $VIMRUNTIME/vimrc_example.vim
